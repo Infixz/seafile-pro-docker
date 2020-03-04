@@ -5,10 +5,10 @@ services:
     image: mariadb:10.4.12-bionic
     container_name: seafile_db
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PW}  # Requested, set the root's password of MySQL service.
+      - MYSQL_ROOT_PASSWORD=${DB_PW}
       - MYSQL_LOG_CONSOLE=true
     volumes:
-      - ${SEAFILE_PATH}/data/mysql/db:/var/lib/mysql  # Requested, specifies the path to MySQL data persistent store.
+      - ./data/mysql/db:/var/lib/mysql
     networks:
       - seafile-net
 
@@ -32,7 +32,7 @@ services:
         hard: -1
     mem_limit: 2g
     volumes:
-      - ${SEAFILE_PATH}/data/elasticsearch/data:/usr/share/elasticsearch/data  # Requested, specifies the path to Elasticsearch data persistent store.
+      - ./data/elasticsearch/data:/usr/share/elasticsearch/data
     networks:
       - seafile-net
 
@@ -42,7 +42,8 @@ services:
     expose:
       - ${PORT}
     volumes:
-      - ${SEAFILE_PATH}/data/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
+      - ./data/seafile-data:/shared
+      - ./seafile.nginx.conf.template:/templates/seafile.nginx.conf.template:ro
     environment:
       - DB_HOST=seafile_db
       - DB_ROOT_PASSWD=${DB_PW}
