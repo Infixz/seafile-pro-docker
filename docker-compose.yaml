@@ -59,6 +59,10 @@ services:
       - seafile_elasticsearch
     networks:
       - seafile-net
+      - reverse-proxy
 
 networks:
   seafile-net:
+  reverse-proxy:
+    external:
+      name: ${REVERSE_PROXY_NET}
