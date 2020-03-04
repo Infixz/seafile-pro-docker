@@ -44,7 +44,7 @@ services:
     volumes:
       - ${SEAFILE_PATH}/data/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
     environment:
-      - DB_HOST=${DB_HOST}
+      - DB_HOST=seafile_db
       - DB_ROOT_PASSWD=${DB_PW}
       - SEAFILE_ADMIN_EMAIL=${ADMIN_EMAIL}
       - SEAFILE_ADMIN_PASSWORD=${ADMIN_PW}
