@@ -37,7 +37,7 @@ services:
       - seafile-net
 
   seafile_server:
-    image: docker.seadrive.org/seafileltd/seafile-pro-mc:latest
+    image: docker.seadrive.org/seafileltd/seafile-pro-mc:7.0.10
     container_name: seafile_server
     expose:
       - ${PORT}
